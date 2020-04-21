@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var computer;
+        var imgnum;
+
+        document.write(imgnum);
+
+        function com() {
+            computer = parseInt(Math.random() * 3) +1;
+            //1~3사이의 난수생성
+            var img_tag = document.getElementById("com");
+            if(computer==1) {
+                img_tag.src = "./images/scissors.jpg";return 1;
+            }
+            else if(computer==2) {
+                img_tag.src = "./images/rock.jpg"; return 2;
+            }
+            else {
+                img_tag.src = "./images/paper.jpg"; return 3;
+            }
+            
+        }
+        
+        function user(imgnum) {
+            img_tag = document.getElementById("rsp");
+            if(imgnum==1){
+                this.imgnum = imgnum;
+                img_tag.src = "./images/scissors.jpg"; return 1;
+            }
+            else if(imgnum==2) {
+                this.imgnum = imgnum;
+                img_tag.src = "./images/rock.jpg"; return 2;
+            }
+            else {
+                this.imgnum = imgnum;
+                img_tag.src = "./images/paper.jpg"; return 3;
+            }
+        }
+
+        function result(imgnum, computer) {
+            switch(imgnum-computer) {
+                case 0:
+                    document.getElementById("result").innerHTML = "비겼습니다";
+                    console.log("비겼습니다"); break;
+				case 1: case -2:
+                    document.getElementById("result").innerHTML = "이겼습니다";
+                    console.log("이겼습니다"); break;
+				case -1: case 2:
+                    document.getElementById("result").innerHTML = "졌습니다";
+                    console.log("졌습니다"); break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>가위바위보게임</h2>
+    <table border="1">
+        <tr>
+            <td>
+                <table border="1">
+                    <tr>
+                        <td>컴퓨터</td>
+                        <td>나</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:com();"></a>
+                            <img id="com" alt="가위바위보게임" src="./images/start.png">
+                        </td>
+                        <td>
+                            <a href="javascript:user();"></a>
+                            <img id="rsp" alt="가위바위보게임" src="./images/start.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- 결과출력 -->
+                        <td colspan="2" id="result">  <br>
+                        </td>
+                    </tr>
+                </table>
+                <button onclick="result(user(1), com());">가위</button>
+                <button onclick="result(user(2), com());">바위</button>
+                <button onclick="result(user(3), com());">보</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
