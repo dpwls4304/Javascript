@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .radius {
+            border-radius: 10px;
+            color: white;
+            font-size: x-large;
+        }
+        .outline {
+            border: 1px solid lightslategray;
+            border-radius: 10px;
+        }
+        .b_dark {
+            background-color: #373737;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var cnt = 0;
+        var sign;
+        function button(obj) {
+            var screen = document.getElementById("screen");
+            
+            if(screen.innerHTML==0) {//0없애고 시작
+                screen.innerHTML="";
+            }
+            
+            if(obj=="=") {//'='이 들어오면
+            obj="";//'='없애고 값 출력
+            var result = eval(screen.innerHTML.replace('x', '*'));
+                screen.innerHTML = result;
+            }
+            
+            if(obj=="clear") {
+                screen.innerHTML="0";
+            }
+            else if(obj=="back") {
+                var lastWord = screen.innerHTML.length;//글자수
+                var back = screen.innerHTML.substring(0, lastWord-1);
+                screen.innerHTML = back;
+            }
+            else {
+                screen.innerHTML += obj;//'='이 들어오기 전까지 값 저장
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2 align="center">계산기</h2>
+    <h3 align="center">파일명:calculator.html</h3>
+   <table class="outline" cellspacing="7" bgcolor="#DDDDDD" align="center" 
+        width="460" height="410">
+   <colgroup>
+    <col style="width: 25%;" class="b_dark"/>
+    <col style="width: 25%;" class="b_dark" />
+    <col style="width: 25%;" class="b_dark" />
+    <col style="width: 25%; background-color: orange;" />
+</colgroup>
+        <tr bgcolor="#70c738" align="right">
+            <th style="color: #373737; 
+            font-size: xxx-large; padding-right: 20px; cursor: default;"  
+            class="radius" colspan="4" id="screen"></td>
+        </tr>
+        <tr height="53" bgcolor="#7B7B7B">
+            <th onclick="button('back');" class="radius" colspan="2">BcakSpace</th>
+            <th onclick="button('clear');" class="radius" colspan="2">C</th>
+        </tr>
+        <tr height="53">
+            <th onclick="button(1);" class="radius"
+                onmouseover="this.style.border='3px solid orange';"
+                onmouseout="this.style.border='none';">1
+            </th>
+            <th onclick="button(2);" class="radius">2</th>
+            <th onclick="button(3);" class="radius">3</th>
+            <th onclick="button('/');" class="radius">/</th>
+        </tr>
+        <tr height="53">
+            <th onclick="button(4);" class="radius">4</th>
+            <th onclick="button(5);" class="radius">5</th>
+            <th onclick="button(6);" class="radius">6</th>
+            <th onclick="button('x');" class="radius">x</th>
+        </tr>
+        <tr height="53">
+            <th onclick="button(7);" class="radius">7</th>
+            <th onclick="button(8);" class="radius">8</th>
+            <th onclick="button(9);" class="radius">9</th>
+            <th onclick="button('+');" class="radius">+</th>
+        </tr>
+        <tr height="53">
+            <th onclick="button('=');" class="radius">=</th>
+            <th onclick="button(0);" class="radius">0</tth>
+            <th onclick="button('.');" class="radius">.</th>
+            <th onclick="button('-');" class="radius">-</th>
+        </tr>
+
+   </table>
+</body>
+</html>
