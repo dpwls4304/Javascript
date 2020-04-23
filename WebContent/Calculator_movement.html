@@ -22,8 +22,6 @@
         }
     </style>
     <script>
-        var cnt = 0;
-        var sign;
         function button(obj) {
             var screen = document.getElementById("screen");
             
@@ -35,6 +33,10 @@
             obj="";//'='없애고 값 출력
             var result = eval(screen.innerHTML.replace('x', '*'));
                 screen.innerHTML = result;
+                if(screen.innerHTML.indexOf(".")==true) {
+                    //소수점 있다면 둘 째 자리까지
+                    screen.innerHTML = result.toFixed(2);
+                }
             }
             
             if(obj=="clear") {
